@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Finding Jun</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/game.css">
+
+  <!--Load in libaries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <div id="application">
+    <div id="mainMenu">
+    <div class="title">
+      
+      <h1>Finding Jun</h1>
+    </div>
+    <br>
+    <ul class="menu">
+      <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="newGame">New Game</li>
+      <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="manageSaves">Manage Saves</li>
+   
+    </ul>
+    </div>
+    <div class="hide" id="introduction">
+      <h2>"Jun Is Dead"</h2>
+    </div>
+    <div class="hide" id="game">
+      <div class="card">AYY LMAO</div>
+    </div>
+    <div id="dialogDiv">
+      <div class="textBox">
+
+        <p id="message"></p>
+      </div>
+    </div>
+  
+    
+    
+  </div>
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

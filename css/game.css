@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
+:root {
+	--back: black;
+	--fore: white;
+	--accent: red;
+}
+
+
+
+body{
+    background-color: var(--back);
+    color: var(--fore);
+    font-family:Manrope;
+    
+}
+#application{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+
+}
+
+.break{
+    flex-wrap: wrap;
+}
+
+
+ul.menu {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0px;
+	
+}
+
+
+ul.menu li {
+	padding: 0.5rem;
+	background: var(--fore);
+	color: var(--accent);
+	transition: 
+		background 250ms ease-in-out,
+		color 250ms ease-in-out;
+}
+
+ul.menu li:hover {
+	background: var(--accent);
+	color: var(--fore);
+}
+
+.textBox{
+	background-color: var(--accent);
+
+	width: 100vw;
+	padding: 50px;
+	position: fixed;
+	top: 80vh;
+	text-align: center;
+	left:0%;
+}
