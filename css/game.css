@@ -10,14 +10,15 @@
 
 body{
     background-color: var(--back);
-    color: var(--fore);
     font-family:Manrope;
     
 }
 #application{
     display: flex;
     justify-content: center;
-    text-align: center;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
     
 
 }
@@ -51,11 +52,36 @@ ul.menu li:hover {
 
 .textBox{
 	background-color: var(--accent);
-
+	min-height: 1000px;
 	width: 100vw;
-	padding: 50px;
+	padding: 5vh;
 	position: fixed;
-	top: 80vh;
+	top: 75vh;
 	text-align: center;
 	left:0%;
+	z-index: 10;
+}
+
+
+#game{
+	margin-top: 10vh;
+	min-height: 90vh;
+}
+
+.textScene{
+	position: fixed;
+	background-color: transparent;
+	color: white !important;
+	width: 100vw;
+	height: 100vw;
+}
+.textScene h2{
+	margin-top: 50vh;
+}
+.blackSolid{
+	transform: translateX(-100vw);
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 200vw;
+	height: 200vw;
 }

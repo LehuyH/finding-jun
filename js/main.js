@@ -1,3 +1,21 @@
+//Setup
+var app = new Vue({
+    el: '#application',
+    data: {
+        dialogTitle: '',
+        follow: [],
+        contacts: [
+          
+          ]
+    },
+    methods: {
+        say: function (message) {
+          alert(message)
+        }
+      }
+  })
+
+
 //Setup menu interaction
 
 newGamebtn = document.getElementById('newGame')
@@ -23,7 +41,29 @@ newGamebtn.addEventListener('click', ()=>{
         duration: 2000,
         complete: function() {
             document.getElementById("mainMenu").classList.add("hide")
+            document.getElementById("application").style.backgroundImage = "url('https://images.unsplash.com/photo-1520473323060-f6f50760c35b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1405&q=80')"
+            setTimeout(function(){
+                document.getElementById("game").classList.remove("hide")
+                document.getElementById("game").style.opacity = 0
+                anime({
+                    targets: "#game",
+                    opacity: 1,
+                    duration:  2000,
+                    easing: "easeInQuad",
+                   
+                   
+                  });
+                music.unsolved.play()
+                music.unsolved.fade(0,1,5000)
+                dialog(dialogStore.intro)
+
+
+
+              
+            },5000)
             playScene(scenes.intro)
+           
+            
           }
       });
 })
@@ -49,10 +89,10 @@ function playScene(scene){
                 targets: scene.e,
                 translateY: scene.endY,
                 opacity: 0,
-                duration:  scene.duration,
+                duration:  2000,
                 easing: "easeInQuad",
                 complete: function() {
-                    scene.e.style.classList.add('hide')
+                    scene.e.classList.add('hide')
                 }
                 
                
@@ -65,6 +105,21 @@ function playScene(scene){
 
 
 function dialog(options){
+    var dialogContainer = document.getElementById('dialogDiv')
+    var textBox = document.querySelector('.textBox')
+    textBox.style.transform = "translateY(500px)"
+    dialogContainer.classList.remove('hide')
+    textBox.style.opacity = "0"
+    anime({
+        targets: ".textBox",
+        opacity: 1,
+        translateY: "0px",
+        easing: "easeInQuad",
+        duration:  1000
+      
+    })
+    
+
     var text = []
     var title = []
    options.forEach(function(dia){
@@ -84,10 +139,30 @@ function dialog(options){
             sfx.blip.stop() 
         },
         onStringTyped: function(self) { sfx.blip.stop() },
-        preStringTyped: function(self) { sfx.blip.play()},
+        preStringTyped: function(self) { 
+            sfx.blip.play() 
+            app.dialogTitle = title[self]},
+        onComplete: function(self){
+              setTimeout(function(){
+                anime({
+                    targets: ".textBox",
+                    opacity: 1,
+                    translateY: "500px",
+                    easing: "easeInQuad",
+                    duration:  1000
+                  
+                })
+                setTimeout(function(){
+                    dialogContainer.classList.add('hide')
+                },1500)
+              },1000)
+
+
+        }
       
    };
+   setTimeout(function(){
    var typed = new Typed('#message', optionText);
-
+    },1500)
 }
 

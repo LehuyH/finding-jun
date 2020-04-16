@@ -15,7 +15,12 @@ var sfx = {
 }
 
 
-
+var music = {
+    unsolved: new Howl({
+        src:['../audio/music/Unsolved-Investigation-isaiah658.ogg'],
+        loop: true
+    })
+}
 
 
 
