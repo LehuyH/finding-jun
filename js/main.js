@@ -6,7 +6,9 @@ var app = new Vue({
         follow: [],
         contacts: [
           
-          ]
+          ],
+        talkLog:[],
+        page: "none"
     },
     methods: {
         say: function (message) {
@@ -20,6 +22,7 @@ var app = new Vue({
 
 newGamebtn = document.getElementById('newGame')
 manageSavesbtn = document.getElementById('manageSaves')
+tutorialbtn = document.getElementById('tutorial')
 
 var scenes = {
     intro: {
@@ -32,7 +35,7 @@ var scenes = {
         }
 }
 
-
+//Menu click events
 newGamebtn.addEventListener('click', ()=>{
     anime({
         targets: '#mainMenu',
@@ -62,6 +65,24 @@ newGamebtn.addEventListener('click', ()=>{
               
             },5000)
             playScene(scenes.intro)
+           
+            
+          }
+      });
+})
+
+tutorialbtn.addEventListener('click', ()=>{
+    anime({
+        targets: '#mainMenu',
+        translateY: 500,
+        opacity: 0,
+        duration: 2000,
+        complete: function() {
+            document.getElementById("mainMenu").classList.add("hide")
+            sfx.lvlUp.play()
+                document.getElementById("application").style.backgroundColor = "#34495e"
+                dialog(dialogStore.tutorial)
+
            
             
           }
@@ -122,6 +143,7 @@ function dialog(options){
 
     var text = []
     var title = []
+    
    options.forEach(function(dia){
        text.push(dia.text)
        title.push(dia.title)
@@ -141,6 +163,7 @@ function dialog(options){
         onStringTyped: function(self) { sfx.blip.stop() },
         preStringTyped: function(self) { 
             sfx.blip.play() 
+            app.talkLog.push({title:title[self],text:text[self]})
             app.dialogTitle = title[self]},
         onComplete: function(self){
               setTimeout(function(){

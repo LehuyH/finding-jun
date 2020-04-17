@@ -8,6 +8,9 @@ var sfx = {
     transition: new Howl({
         src: ['../audio/sfx/Transition.mp3']
     }),
+    lvlUp: new Howl({
+        src: ['../audio/sfx/Level Up.mp3']
+    }),
     blip: new Howl({
         src: ['../audio/sfx/blip.wav'],
         loop:true
@@ -21,7 +24,9 @@ var music = {
         loop: true
     })
 }
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
 
 

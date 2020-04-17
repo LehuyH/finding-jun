@@ -1,5 +1,13 @@
 var dialogStore = {
+  tutorial:[
+    {
+      title: "",
+      text:"Saturday"
 
+
+
+  },
+  ],
   intro : [
     {
         title: "",

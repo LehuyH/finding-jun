@@ -19,6 +19,8 @@ body{
 	text-align: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	transition: background 1.5s ease-in-out;
+	background-image: url('../img/def.png');
     
 
 }
@@ -84,4 +86,14 @@ ul.menu li:hover {
 	background-color: rgba(0, 0, 0, 0.7);
 	width: 200vw;
 	height: 200vw;
+}
+.textTitle{
+	text-shadow: black 2px 2px;
+}
+.page{
+	overflow: scroll;
+	overflow-x: hidden;
+	max-height: 50vh;
+	min-height: 50vh;
+	min-width: 30vw;
 }
