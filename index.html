@@ -19,10 +19,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
 
 
   <meta name="theme-color" content="#fafafa">
@@ -35,129 +38,212 @@
 
   <!-- Add your site or application content here -->
   <div id="application">
-    <div class="" id="mainMenu">
-    <div class="title">
-      
-      <h1 style="color:white">Finding Jun</h1>
-    </div>
-    <br>
-    <ul class="menu">
-      <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="tutorial" data-toggle="tooltip" data-placement="right" title="Select This If You Are New">Tutorial</li>
-      <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="newGame">New Game</li>
-      <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="manageSaves">Manage Saves</li>
-   
-    </ul>
+    <div class="menu" id="mainMenu">
+      <div class="title">
+
+        <h1 style="color:white">Finding Jun</h1>
+      </div>
+      <br>
+      <ul class="menu">
+        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="tutorial" data-toggle="tooltip"
+          data-placement="right" title="Select This If You Are New">Tutorial</li>
+        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="newGame">New Game</li>
+        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="manageSaves">Manage Saves</li>
+
+      </ul>
     </div>
     <div class="hide textScene" id="introduction">
-      <h2 style="color:white">The Story Begins</h2>
+      <h2 id="textScene" style="color:white">The Story Begins</h2>
     </div>
     <div class="hide" id="game">
       <div class="container">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal">{{ modal.title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {{ modal.text }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-sm">
             <div class="card mb-3">
               <h3 class="card-header">Contacts</h3>
-             
+
               <ul class="list-group list-group-flush" v-for="(value, name, index) in contacts">
                 <li class="list-group-item">
-                  {{ value.name }}
-                  <button class="btn btn-success btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="say(value.name)">Talk</button>
+                  {{ value }}
+                  <button class="btn btn-success btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
+                    v-on:click="triggerDialog(value)">Talk</button>
 
                 </li>
-             
+
               </ul>
               <div class="card-footer text-muted">
                 Signal Established
               </div>
             </div>
-        
+
             <div class="card mb-3">
               <h3 class="card-header">Social Media</h3>
               <div class="card-body">
                 <h5 class="card-title">Following {{ follow.length }} Users</h5>
                 <h6 class="card-subtitle text-muted">Followed users will show up on your feed</h6>
               </div>
-              
-              <ul v-if="follow.length > 0"  v-for="(value, name, index) in follow"class="list-group list-group-flush">
-                <li class="list-group-item">{{ value }}  <button class="btn btn-primary btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="say(value)">View Posts</button> </li>
+
+              <ul v-if="follow.length > 0" v-for="(value, name, index) in follow" class="list-group list-group-flush">
+                <li class="list-group-item">{{ value }} <button class="btn btn-primary btn-sm"
+                    onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="say(value)">View
+                    Posts</button> </li>
               </ul>
               <p v-else>You are not follwing anyone</p>
-             
+
               <div class="card-footer text-muted">
-              
+
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Tools</h4>
-                <button class="btn btn-primary btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="page = 'none'">Close</button>
-                <button class="btn btn-primary btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="page = 'log'">Logs</button>
+                <button class="btn btn-primary btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
+                  v-on:click="page = 'none'">Close</button>
+                <button class="btn btn-primary btn-sm" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
+                  v-on:click="page = 'log'">Logs</button>
 
               </div>
             </div>
           </div>
           <div class="col-med">
             <div class="page">
-              <div v-if="page == 'none'"class="list-group">
+              <div v-if="page == 'talk'" class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Talk with {{ selected}}</h5>
+                    
+
+                  </div>
+                  <p class="mb-1">If you want to bring up a clue, you can do it here</p>
+
+                </a>
+                <select id="clueSelect" class="form-control">
+                  
+                  <option>Do not talk about a clue</option>
+                  <option v-for="clue in clues" :value="clue">{{ clue }}</option>
+                  
+                 
+                  
+                </select>
+                <button  v-on:click="startDialog()" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="btn btn-success">Talk</button>
+
+              </div>
+              <div v-if="page == 'none'" class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">No Page Open</h5>
-                  
-                    
+
+
                   </div>
                   <p class="mb-1">You can access pages by clicking on the button under tools </p>
-                  
+
                 </a>
-                
+
               </div>
-            <div v-if="page == 'log'"class="list-group">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Talk Log</h5>
-                
-                  
+              <div v-if="page == 'log'" class="list-group">
+                <a class="list-group-item list-group-item-action flex-column align-items-start active">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Talk Log</h5>
+
+
+                  </div>
+                  <p class="mb-1">All interactions made will be logged here </p>
+
+                </a>
+                <div v-for="(value, name, index) in talkLog">
+                  <a class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ value.title }}</h5>
+                    </div>
+                    <p class="mb-1"></p>{{ value.text }}</p>
+                  </a>
                 </div>
-                <p class="mb-1">All interactions made will be logged here </p>
-                
-              </a>
-              <div  v-for="(value, name, index) in talkLog">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{ value.title }}</h5>
-                </div>
-                <p class="mb-1"></p>{{ value.text }}</p>
-              </a>
               </div>
             </div>
-          </div>
           </div>
           <div class="col-sm">
-            <div class="card border-danger mb-3" style="max-width: 20rem;">
-              <div class="card-header">Clues</div>
+            <div class="card mb-3" style="max-width: 20rem;">
+              <h3 class="card-header">Clues</h3>
               <div class="card-body">
-                <h4 class="card-title">Danger card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p v-if="clues.length == 0" class="card-text">You have no clues</p>
+                <ul v-for="(value, name, index) in clues" class="list-group list-group-flush">
+                  <li class="list-group-item">{{ value }}</li>
+                  </ul>
+              </div>
+            </div>
+            <div v-if="tutorial !== null" class="card mb-3" style="max-width: 20rem;">
+              <h3 class="card-header">Tutorial</h3>
+              <div class="card-body">
+                <p class="card-text">{{ tutorial }}</p>
+               
+
+              </div>
+            </div>
+            <div v-if="actions !== null" class="card mb-3" style="max-width: 20rem;">
+              <h3 class="card-header">Action</h3>
+              <div class="card-body">
+               <div>
+                <p>As you progress, you will be able to do actions. Sometimes they will unlock if you talk to someone</p>
+                <ul class="list-group list-group-flush" v-for="(value, name, index) in actions">
+                
+                  <li class="list-group-item">
+               
+                    <button class="btn btn-primary btn-med" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
+                      v-on:click="triggerAction(value)">{{ value }}</button>
+  
+                  </li>
+  
+                </ul>
+               </div>
+               
+
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
     <div class="hide" id="dialogDiv">
       <div class="blackSolid"></div>
       <div class="textBox">
-        <h2 id="title" class="textTitle"style="text-align: left; color:white;">{{ dialogTitle }}</h2>
+        <h2 id="title" class="textTitle" style="text-align: left; color:white;">{{ dialogTitle }}</h2>
         <h3 style="color:white" id="message"></h3>
       </div>
     </div>
-  
-    
-    
+
+
+
   </div>
   <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')
+
+  </script>
   <script src="js/plugins.js"></script>
+  <script src="js/events.js"></script>
   <script src="js/db.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/main.js"></script>

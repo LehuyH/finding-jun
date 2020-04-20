@@ -1,4 +1,5 @@
 //Setup
+var debug = true
 var app = new Vue({
     el: '#application',
     data: {
@@ -8,14 +9,48 @@ var app = new Vue({
           
           ],
         talkLog:[],
-        page: "none"
+        page: "none",
+        clues:[],
+        modal: {title:'',text:''},
+        tutorial: null,
+        selected: null,
+        actions:[]
     },
-    methods: {
-        say: function (message) {
-          alert(message)
+    methods:{
+        triggerDialog : function(contact){
+            this.page = "talk"
+            this.selected = contact
+        },
+        triggerAction: function(action){
+            dialog(dialogStore.actions[action])
+        },
+        startDialog: function(clue){
+            var clue = document.getElementById('clueSelect').value
+            app.page = "none"
+            if (clue == "Do not talk about a clue"){
+                if(gameState == 4){
+                    dialog(dialogStore[app.selected].dialog[gameState])
+                }else if(gameState > 13 && app.selected == "Mia" && clue == "Jun was shot by the police for doing or selling drugs"){
+                    dialog(dialogStore.Mia.dialog.already)
+                }else if(gameState == 14){
+                    dialog(dialogStore[app.selected].dialog[14])
+                }
+                else if(gameState == 8){
+                    dialog(dialogStore[app.selected].dialog[4])
+                }else{
+                dialog(dialogStore[app.selected].dialog[dialogStore[app.selected].state])
+                }
+            }else{
+                dialog(dialogStore[app.selected].dialog[clue])
+            }
+       
+        
+            
+
         }
-      }
+    }
   })
+  $('#modal').modal({ show: false})
 
 
 //Setup menu interaction
@@ -24,11 +59,15 @@ newGamebtn = document.getElementById('newGame')
 manageSavesbtn = document.getElementById('manageSaves')
 tutorialbtn = document.getElementById('tutorial')
 
+//Get other elements
+
+
+
 var scenes = {
     intro: {
         e: document.getElementById("introduction"),
         transform: "translateY(800px)",
-        endY: 300,
+        endY: 0,
         duration: 2000,
         audio: sfx.transition
     
@@ -64,7 +103,7 @@ newGamebtn.addEventListener('click', ()=>{
 
               
             },5000)
-            playScene(scenes.intro)
+            textScene(scenes.intro,"The Story Begins")
            
             
           }
@@ -90,9 +129,10 @@ tutorialbtn.addEventListener('click', ()=>{
 })
 
 
+//Game functions
 
-
-function playScene(scene){
+function textScene(scene,text){
+    document.getElementById("textScene").innerText = text
     scene.audio.play()
     scene.e.classList.remove("hide")
     scene.e.style.transform = scene.transform
@@ -126,6 +166,11 @@ function playScene(scene){
 
 
 function dialog(options){
+    try{
+    document.getElementById('message').data('typed', null) 
+    }catch{
+        
+    }
     var dialogContainer = document.getElementById('dialogDiv')
     var textBox = document.querySelector('.textBox')
     textBox.style.transform = "translateY(500px)"
@@ -148,6 +193,10 @@ function dialog(options){
        text.push(dia.text)
        title.push(dia.title)
    })
+   if(debug == true){
+    text = [text[text.length - 1]]
+    title = [title[title.length - 1]]
+   }
  
     var optionText = {
         strings:text,
@@ -177,6 +226,15 @@ function dialog(options){
                 })
                 setTimeout(function(){
                     dialogContainer.classList.add('hide')
+                  
+                   if(options[options.length-1].callback !== undefined){
+                        if(options[options.length-1].param !== undefined)   {
+                            options[options.length-1].callback(options[options.length-1].param)
+                        }else{
+                            options[options.length-1].callback()
+                        }
+                   
+                   }
                 },1500)
               },1000)
 
@@ -187,5 +245,44 @@ function dialog(options){
    setTimeout(function(){
    var typed = new Typed('#message', optionText);
     },1500)
+}
+
+function addClue(clue){
+    app.clues.push(clue)
+    sfx.lvlUp.play()
+    openModal("New Clue!", "You have uncovered a clue surrounding Jun's death and you can now use it in conversations")
+}
+function editClue(clue,pos){
+    app.clues[pos] = clue
+    sfx.lvlUp.play()
+    openModal("New Clue!", "You have uncovered a clue surrounding Jun's death and you can now use it in conversations")
+}
+function getClue(getclue){
+    var found = null
+    app.clues.forEach(function(clue,i){
+        if(clue == getclue){
+           found = i
+        }
+        if(i == app.actions.length - 1){
+          found = undefined 
+        }
+    })
+    return found;
+}
+function removeAction(action){
+    var pos = null
+    app.actions.forEach(function(act,i){
+        if(act == action){
+            pos = i
+        }
+        if(i == app.actions.length - 1){
+            app.actions.splice(pos, 1);
+        }
+    })
+}
+function openModal(title,text){
+    app.modal.title = title
+    app.modal.text = text
+    $('#modal').modal('show');
 }
 

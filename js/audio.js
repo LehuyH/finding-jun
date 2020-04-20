@@ -22,7 +22,27 @@ var music = {
     unsolved: new Howl({
         src:['../audio/music/Unsolved-Investigation-isaiah658.ogg'],
         loop: true
-    })
+    }),
+    time: new Howl({
+        src:['../audio/music/Kim Lightyear - Time Is Ticking Away.mp3'],
+        loop:true
+    }),
+    mall: new Howl({
+        src:['../audio/music/Mall.ogg'],
+        loop:true,
+        volume: 0.4
+    }),
+    discovery: new Howl({
+        src:['../audio/music/The Biggest Discovery.ogg'],
+        loop:true,
+        volume: 0.4
+    }),
+    mimos: new Howl({
+        src:['../audio/music/Mimos Menguados.ogg'],
+        loop:true,
+        volume: 0.4
+    }),
+   
 }
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()

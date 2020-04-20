@@ -86,6 +86,7 @@ ul.menu li:hover {
 	background-color: rgba(0, 0, 0, 0.7);
 	width: 200vw;
 	height: 200vw;
+	z-index: 3;
 }
 .textTitle{
 	text-shadow: black 2px 2px;
@@ -96,4 +97,7 @@ ul.menu li:hover {
 	max-height: 50vh;
 	min-height: 50vh;
 	min-width: 30vw;
+}
+.textScene{
+	z-index: 5;
 }
