@@ -1018,66 +1018,7 @@ var dialogStore = {
           title: "Mom",
           text: "How are you holding up?"
         },
-        {
-          title: "Jay",
-          text: "Fine, why aren't they giving him a funeral"
-        },
-        {
-          title: "Mom",
-          text: "You know how your uncle is"
-        },
-        {
-          title: "Jay",
-          text: "Yeah but"
-        },
-        {
-          title: "Mom",
-          text: "His family doesn't want to talk about it we should respect that."
-        },
-        {
-          title: "Jay",
-          text: "You know the reason, don't you? You can tell me. I'm not a kid anymore."
-        },
-        {
-          title: "Jay",
-          text: "So we're just going to act like this didn't happen? Like jun didn't even exist?"
-        },
-        {
-          title: "Mom",
-          text: "You're not going to let this go, are you?"
-        },
-        {
-          title: "Jay",
-          text: "No"
-        },
-        {
-          title: "Mom",
-          text: "Just like your father…"
-        },
-        {
-          title: "Mom",
-          text: "It's not going to do anything for you, except cause you more pain."
-        },
-        {
-          title: "Jay",
-          text: "I know."
-        },
-        {
-          title: "Mom",
-          text: "Do you know what shabu is?"
-        },
-        {
-          title: "Jay",
-          text: "Shabu?"
-        },
-        {
-          title: "Mom",
-          text: "It's what they call meth in the Philippines. a cheap high. Easy to find. Devastating."
-        },
-        {
-          title: "Jay",
-          text: "Oh"
-        },
+      
         {
           title: "Mom",
           text: "I don't know everything, only what your dad tells me, and I can tell he doesn't know the full story either. You know how his family is."
@@ -1088,23 +1029,7 @@ var dialogStore = {
         },
         {
           title: "Jay",
-          text: "What do you mean"
-        },
-        {
-          title: "Mom",
-          text: "After Jen when away from home, he started living on the streets. I had something he started using."
-        },
-        {
-          title: "Jay",
-          text: "Overdose?"
-        },
-        {
-          title: "Mom",
-          text: "Shake head"
-        },
-        {
-          title: "Jay",
-          text: "Then what?"
+          text: "What do you mean?"
         },
         {
           title: "Mom",
@@ -1144,7 +1069,7 @@ var dialogStore = {
         },
         {
           title: "Mom",
-          text: "(nods) Blamed drugs. Said he had a plan to get rid of the and once he did, there wouldn’t be any more crime."
+          text: "He Blamed drugs. Said he had a plan to get rid of the and once he did, there wouldn’t be any more crime."
         },
         {
           title: "Jay",
@@ -1152,15 +1077,11 @@ var dialogStore = {
         },
         {
           title: "Mom",
-          text: "He won by a landslide"
-        },
-        {
-          title: "Mom",
-          text: "He ordered anyone addicted or selling to turn themselves in. If they didn’t, he encourtged the police and the police and the people to kill themtif they resisted. ^1000 without a warrant or a trial"
+          text: "He ordered anyone addicted or selling to turn themselves in. If they didn’t, he encouraged the police and the people to kill them ... without a warrant or a trial"
         },
         {
           title: "Jay",
-          text: "isn't that illegal"
+          text: "isn't that illegal?"
         },
         {
           title: "Mom",
