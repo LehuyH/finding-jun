@@ -121,7 +121,7 @@ manageSaves.addEventListener('click', () => {
   }else{
   app.clues = save.clues
   app.contacts = save.contacts
-
+  app.gameState = save.gameState
   anime({
     targets: '#mainMenu',
     translateY: 500,
