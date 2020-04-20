@@ -25,8 +25,6 @@ var eventStore = {
     tutorialPrt4 : function(){
         if(gameState == 2){
             gameState++
-            app.follow.push("GISING NA PH!")
-            app.contacts.push("???")
             anime({
                 targets: "#game",
                 opacity: 0,
