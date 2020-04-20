@@ -45,12 +45,49 @@
       </div>
       <br>
       <ul class="menu">
-        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="tutorial" data-toggle="tooltip"
-          data-placement="right" title="Select This If You Are New">Tutorial</li>
+    
         <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="newGame">New Game</li>
-        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="manageSaves">Manage Saves</li>
+        <li onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="lead" id="manageSaves">Load Save</li>
 
       </ul>
+    </div>
+    <div class="hide end" id="end">
+      <div class="title">
+
+        <h1 style="color:white">Finding Jun</h1>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <ul class="menu">
+            <div class="card mb-3" style="max-width: 20rem;">
+              <h3 class="card-header">Clues</h3>
+              <div class="card-body">
+                <p v-if="clues.length == 0" class="card-text">You have no clues</p>
+                <ul v-for="(value, name, index) in clues" class="list-group list-group-flush">
+                  <li class="list-group-item">{{ value }}</li>
+                </ul>
+              </div>
+            </div>
+
+          </ul>
+          <h4 style="color: white;">{{ clues.length }} / 3 Clues Found</h4>
+        </div>
+        <div class="col-sm">
+        <img src="img/end.PNG">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+        <div >
+        <h2 style="color: white;">  Interesting Files</h2>
+        <a  style="color: white;" target="_blank" href="js/db.js">All dialogue</a>
+        <br>
+        <a  style="color: white;" target="_blank" href="js/main.js">Core game functions</a>
+        </div>
+        </div>
+      </div>
     </div>
     <div class="hide textScene" id="introduction">
       <h2 id="textScene" style="color:white">The Story Begins</h2>
@@ -60,8 +97,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal"
-          aria-hidden="true">
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -99,18 +135,10 @@
             </div>
 
             <div class="card mb-3">
-              <h3 class="card-header">Social Media</h3>
-              <div class="card-body">
-                <h5 class="card-title">Following {{ follow.length }} Users</h5>
-                <h6 class="card-subtitle text-muted">Followed users will show up on your feed</h6>
-              </div>
-
-              <ul v-if="follow.length > 0" v-for="(value, name, index) in follow" class="list-group list-group-flush">
-                <li class="list-group-item">{{ value }} <button class="btn btn-primary btn-sm"
-                    onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" v-on:click="say(value)">View
-                    Posts</button> </li>
-              </ul>
-              <p v-else>You are not follwing anyone</p>
+              <h3 class="card-header">Save Game</h3>
+             
+              <button class="btn btn-primary btn-sm"
+              onmouseover="sfx.hover.play()" onclick="sfx.confirm.play(); saveGame()" >Save</button>
 
               <div class="card-footer text-muted">
 
@@ -133,21 +161,22 @@
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Talk with {{ selected}}</h5>
-                    
+
 
                   </div>
                   <p class="mb-1">If you want to bring up a clue, you can do it here</p>
 
                 </a>
                 <select id="clueSelect" class="form-control">
-                  
+
                   <option>Do not talk about a clue</option>
                   <option v-for="clue in clues" :value="clue">{{ clue }}</option>
-                  
-                 
-                  
+
+
+
                 </select>
-                <button  v-on:click="startDialog()" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()" class="btn btn-success">Talk</button>
+                <button v-on:click="startDialog()" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
+                  class="btn btn-success">Talk</button>
 
               </div>
               <div v-if="page == 'none'" class="list-group">
@@ -190,34 +219,35 @@
                 <p v-if="clues.length == 0" class="card-text">You have no clues</p>
                 <ul v-for="(value, name, index) in clues" class="list-group list-group-flush">
                   <li class="list-group-item">{{ value }}</li>
-                  </ul>
+                </ul>
               </div>
             </div>
             <div v-if="tutorial !== null" class="card mb-3" style="max-width: 20rem;">
               <h3 class="card-header">Tutorial</h3>
               <div class="card-body">
                 <p class="card-text">{{ tutorial }}</p>
-               
+
 
               </div>
             </div>
             <div v-if="actions !== null" class="card mb-3" style="max-width: 20rem;">
               <h3 class="card-header">Action</h3>
               <div class="card-body">
-               <div>
-                <p>As you progress, you will be able to do actions. Sometimes they will unlock if you talk to someone</p>
-                <ul class="list-group list-group-flush" v-for="(value, name, index) in actions">
-                
-                  <li class="list-group-item">
-               
-                    <button class="btn btn-primary btn-med" onmouseover="sfx.hover.play()" onclick="sfx.confirm.play()"
-                      v-on:click="triggerAction(value)">{{ value }}</button>
-  
-                  </li>
-  
-                </ul>
-               </div>
-               
+                <div>
+                  <p>As you progress, you will be able to do actions. Sometimes they will unlock if you talk to someone
+                  </p>
+                  <ul class="list-group list-group-flush" v-for="(value, name, index) in actions">
+
+                    <li class="list-group-item">
+
+                      <button class="btn btn-primary btn-med" onmouseover="sfx.hover.play()"
+                        onclick="sfx.confirm.play()" v-on:click="triggerAction(value)">{{ value }}</button>
+
+                    </li>
+
+                  </ul>
+                </div>
+
 
               </div>
             </div>

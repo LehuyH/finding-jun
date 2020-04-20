@@ -590,6 +590,40 @@ var dialogStore = {
   {title:"Mia",text:" Magandang gabi! (That means g'night) ;)"},
   {title:"Jay",text:" Magandang gabi, Mia"},
   ],
+  dayTwo:[
+    {title:"",text:" It's getting late and I should head to bed"},
+{title:"",text:" …"},
+{title:"",text:" I wake up early the next morning long before the alarm I set because my brain hates me"},
+{title:"",text:" Tita Chato and Tita Ines are in the kitchen making breakfast."},
+{title:"Tita Chato",text:" How did you sleep?"},
+{title:"Jay",text:" alright"},
+{title:"Tita Chato",text:" Not to hot?"},
+{title:"Jay",text:" No"},
+{title:"Tita Ines",text:"breakfast will be ready soon!"},
+{title:"Tita Chato",text:" I feel bad for not being able to stay here with you. Tomorrow I will try to take a day off and spend some time with you."},
+{title:"Tita Ines",text:" Me too"},
+{title:"",text:" after we eat breakfast and Chato and Ines leaves for work someone rings your doorbell"},
+{title:"",text:" I open the door in the understanding there"},
+{title:"Jay",text:" Ah, ready to go to the bookstore?"},
+{title:"Mia",text:" no need. I looked up the owner's name, found his number, and called him this morning."},
+{title:"Mia",text:" apparently, Jun was one of his best customers. Used to special order hard to find books off a Time that would be very difficult for the guy to track down."},
+{title:"Mia",text:" but he was glad to do it for someone who love the written word so much. He said to tell you he was sorry to hear about his death"},
+{title:"Jay",text:" I don't suppose he knows where Jun went after he left my aunts house"},
+{title:"Mia",text:" he didn't know about that. But he gave me the last address where he mailed a book and it wasn't your tita Chato's house."},
+{title:"Jay",text:" are you serious?"},
+{title:"Mia",text:" Yep"},
+{title:"Mia",text:" I don't know if there's some mistake, maybe? The address he gave me is in the slums"},
+{title:"Mia",text:" I called one of my professors who does a lot of reporting in that area, and we're going to meet up with him so he can help us find that place safely."},
+{title:"Jay",text:" we really need a guy?"},
+{title:"Mia",text:" yes"},
+{title:"Mia",text:" oh and before you go there's one more thing. Before I hung up the bookstore owner asked if Jun's dead, who's been updating the site?"},
+{title:"Jay",text:" what site?"},
+{title:"Mia",text:" that's what I asked. But he became very nervous. Mumbled something about it being a mistake, said goodbye quickly, and then hung up."},
+{title:"Jay",text:" so he ran a website?"},
+{title:"Mia",text:" it seems like it. Now, ready to go to the address he gave us?"},
+{title:"Jay",text:" let's do it.",callback:eventStore.fin}
+
+  ],
 
 
   //Contacts
@@ -1720,8 +1754,15 @@ var dialogStore = {
         },
         {
           title: "Mia",
-          text: "I don't know. Try to find out Jay, your are with his family"
+          text: "I don't know. Try to find out Jay, you are with his family"
         }
+      ],
+      "Jun had drugs and was kicked by Tito Maning":[
+        {title:"",text:" I text Mia what I just learned about Jun."},
+{title:"Mia",text:" Wow, That's Crazy"},
+{title:"Mia",text:" So Just like you? Kicked out and staying at your Tita's place?"},
+{title:"Mia",text:" Was there anything of importance in his items?"},
+
       ],
       "Jun was on a list of drug dealers": [{
         title: "",
@@ -1843,9 +1884,15 @@ var dialogStore = {
         {title:"Jay",text:" how long did he stay with you?"},
 {title:"Tita Chato",text:" almost one year."},
 {title:"Tita Chato",text:" for that year, we lived together, the three of us. We went to work. He went to school."},
-{title:"Tita Chato",text:" we even went on a few short vacations together."},
+{title:"Tita Chato",text:" we even went on a few short vacations together.", callback:eventStore.updateRunClue},
 
       ],
+      "Jun had drugs and was kicked by Tito Maning":[
+        {
+          title: "",
+          text: "She already knows this"
+        }
+      ]
 
 
     }
@@ -1893,10 +1940,16 @@ var dialogStore = {
         {title:"Tita Chato",text:" he left"},
         {title:"Jay",text:" Why?"},
         {title:"Tita Chato",text:" we do not know exactly, we come home from work one day, after we discover here is not going to school, and he is not here."},
-        {title:"Tita Chato",text:" there is a box inside of all he left behind. We kept it in case he returned. If you want to look through it later, you can take what you want."}
+        {title:"Tita Chato",text:" there is a box inside of all he left behind. We kept it in case he returned. If you want to look through it later, you can take what you want.",callback:eventStore.checkItems}
         
 
       ],
+      "Jun had drugs and was kicked by Tito Maning":[
+        {
+          title: "",
+          text: "She already knows this"
+        }
+      ]
 
 
     }
@@ -1990,7 +2043,7 @@ var dialogStore = {
       },
       {
         title: "Tito Maning",
-        text: " I know it is not pizza or hamburgers but this is not America. Here, we do not waste in the Philippines",
+        text: " I know it is not pizza or hamburgers but this is not America. We do not waste in the Philippines",
         callback: eventStore.dayTwoPhil
       }
     ],
@@ -2180,6 +2233,16 @@ var dialogStore = {
     {title:"Jay",text:" but I thought we do that tomorrow"},
     {title:"Tito Maning",text:" that was the plan, but you have outworn your welcome in my home.", callback: eventStore.kickOut}
     ],
+    "Check Jun's Items":[
+      {title:"",text:" A small stack of pirated DVDs and CDs"},
+{title:"",text:" And three books"},
+{title:"",text:" I pick up and examine each item."},
+{title:"",text:" inbetween one of the books is a slip of paper"},
+{title:"",text:" it's a business card for a bookstore. As a number and address and the owner's name."},
+{title:"",text:" I text Mia this info right away."},
+{title:"Jay",text:" I just found this in one of his own books maybe we can check out the store tomorrow?"},
+{title:"Mia ",text:"sure. I'll stop by in the morning.",callback: eventStore.nextDay}
+    ]
 
   },
 

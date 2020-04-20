@@ -192,6 +192,8 @@ var eventStore = {
                       });
                       app.contacts = ["Dad","Mom","Sister","Grace","Angel","Tita Ami"]
                       app.actions = []
+                    music.stop()
+                    music.play()
                     music.time.fade(0,1,5000)
                     dialog(dialogStore.goBack)
                     setTimeout(function(){
@@ -232,7 +234,7 @@ var eventStore = {
                       app.contacts = ["Tito Maning"]
                       app.actions = ["Ask what happened to Jun"]
                     music.discovery.play()
-                    music.discovery.fade(0,1,5000)
+                    music.discovery.fade(0,0.4,5000)
                     dialog(dialogStore.afterMass)
                     setTimeout(function(){
                         $('#modal').modal('hide');
@@ -290,6 +292,61 @@ var eventStore = {
            
           });
     
+    },
+    updateRunClue: function(){
+            if(gameState == 14){
+                gameState++
+                dialogStore["Tita Chato"].state = 1
+                editClue("Jun had drugs and was kicked by Tito Maning",getClue("Jun ran away from home"))
+                sfx.lvlUp.play()
+                openModal("New Clue!", "You have uncovered a clue surrounding Jun's death and you can now use it in conversations")
+            }
+    },
+    checkItems: function(){
+        app.actions.push("Check Jun's Items")
+        app.actions = [ ...new Set(app.actions) ];
+        
+    },
+    nextDay: function(){
+        dialog(dialogStore.day2)
+    },
+    fin : function(){
+        anime({
+            targets: "#game",
+            opacity: 0,
+            duration:  2000,
+            easing: "easeInQuad",
+            complete: function (){
+                document.getElementById("game").classList.add('hide')
+                music.mimos.fade(0.4,0,5000)
+                textScene(scenes.intro,"Fin")
+                setTimeout(function(){
+                    document.getElementById("application").style.backgroundImage = "url('')"
+                    app.tutorial = ""
+                    document.getElementById("end").classList.remove("hide")
+                    document.getElementById("end").style.opacity = 0
+                    anime({
+                        targets: "#end",
+                        opacity: 1,
+                        duration:  2000,
+                        easing: "easeInQuad",
+                       
+                       
+                      });
+                      app.contacts = []
+                      music.solve.play()
+                      app.actions = []
+                   
+             
+    
+    
+    
+                  
+                },5000)
+            }
+           
+           
+          });
     }
 }
 

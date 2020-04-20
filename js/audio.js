@@ -42,6 +42,11 @@ var music = {
         loop:true,
         volume: 0.4
     }),
+    solve: new Howl({
+        src:['../audio/music/Solve The Puzzle.ogg'],
+        loop:true,
+        volume: 0.4
+    })
    
 }
 $(function () {
