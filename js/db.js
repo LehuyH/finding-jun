@@ -1120,7 +1120,7 @@ var dialogStore = {
         },
         {
           title: "Mom",
-          text: "Rodrigo Duterte? President of the Philippines? You don't know about him? about the drug work?"
+          text: "Rodrigo Duterte? President of the Philippines? You don't know about him? about the drug war?"
         },
         {
           title: "Jay",
