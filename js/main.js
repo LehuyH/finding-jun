@@ -122,6 +122,7 @@ manageSaves.addEventListener('click', () => {
   app.clues = save.clues
   app.contacts = save.contacts
   app.gameState = save.gameState
+  app.actions = save.actions
   anime({
     targets: '#mainMenu',
     translateY: 500,
@@ -345,6 +346,7 @@ function saveGame() {
     gameState: gameState,
     contacts: app.contacts,
     clues: app.clues,
+    actions:app.actions,
     bg: document.getElementById('application').style.backgroundImage
 
   }

@@ -255,7 +255,7 @@ var dialogStore = {
     },
     {
       title: "",
-      text: " When I go to the airport, someone was already waiting for me"
+      text: " When I arrived at the airport, someone was already waiting for me"
     },
     {
       title: "",
@@ -862,7 +862,7 @@ var dialogStore = {
         },
         {
           title: "Em",
-          text: "I bet it was suicide, you know some catholics are weird about that."
+          text: "I bet it was suicide, you know some Catholics are weird about that."
         },
         {
           title: "Jay",
@@ -870,7 +870,7 @@ var dialogStore = {
         },
         {
           title: "Em",
-          text: "Chill. Didn'y say it was, baby bro. ^500 Just trying to help"
+          text: "Chill. Didn't say it was, baby bro. ^500 Just trying to help"
         },
         {
           title: "Jay",
@@ -882,11 +882,11 @@ var dialogStore = {
         },
         {
           title: "Em",
-          text: "Whatever. Anyway you're going to love college, dude. It's like, infinitely better than high school. Nobody force you to go to class and-"
+          text: "Whatever. Anyway, you're going to love college, dude. It's like, infinitely better than high school. Nobody force you to go to class and-"
         },
         {
           title: "Jay",
-          text: "I've got to go, Em. Sorry I woke you up. I'll let you go back to sleep."
+          text: "I've got to go, Em. Sorry, I woke you up. I'll let you go back to sleep."
         },
         {
           title: "Em",
@@ -1180,7 +1180,7 @@ var dialogStore = {
         },
         {
           title: "Mom",
-          text: "Something think over ten or maybe twenty-thousand. But the government says only a few thousand."
+          text: "Some think over ten or maybe twenty-thousand. But the government says only a few thousand."
         },
         {
           title: "Jay",
@@ -1256,7 +1256,7 @@ var dialogStore = {
         },
         {
           title: "Mom",
-          text: "I think it has to to with Tito Maning. I am not sure"
+          text: "I think it has to do with Tito Maning. I am not sure"
         }
 
       ],
@@ -1297,7 +1297,7 @@ var dialogStore = {
         },
         {
           title: "Angel",
-          text: "What is her favorite band, tv show, movie?? How does she wear here hair?"
+          text: "What is her favorite band, tv show, movie?? How does she wear her hair?"
         },
       ],
       "Jun was shot by the police for doing or selling drugs": [{
@@ -1503,12 +1503,12 @@ var dialogStore = {
         },
         {
           title: "",
-          text: "She shakes her head head and speaks in tagalog as she walks away from me."
+          text: "She shakes her head and speaks in Tagalog as she walks away from me."
         }
       ],
       "Jun was on a list of drug dealers": [{
         title: "",
-        text: "It's probably best if i don't tell her that I went into Tito manning's room"
+        text: "It's probably best if I don't tell her that I went into Tito manning's room"
       }
 
 
@@ -1725,7 +1725,7 @@ var dialogStore = {
         },
         {
           title: "Mia",
-          text: ". It's also seems to be a list of drug dealers and Jun's on it."
+          text: ". It also seems to be a list of drug dealers and Jun's on it."
         },
         {
           title: "Jay",
@@ -1733,7 +1733,7 @@ var dialogStore = {
         },
         {
           title: "Mia",
-          text: " most likely, every barangay captain is ask to keep a list of suspect for the authorities."
+          text: " most likely, every barangay captain is asked to keep a list of suspects for the authorities."
         },
         {
           title: "Jay",
