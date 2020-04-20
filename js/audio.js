@@ -20,30 +20,30 @@ var sfx = {
 
 var music = {
     unsolved: new Howl({
-        src:['../audio/music/Unsolved-Investigation-isaiah658.ogg'],
+        src:['audio/music/Unsolved-Investigation-isaiah658.ogg'],
         loop: true
     }),
     time: new Howl({
-        src:['../audio/music/Kim Lightyear - Time Is Ticking Away.mp3'],
+        src:['audio/music/Kim Lightyear - Time Is Ticking Away.mp3'],
         loop:true
     }),
     mall: new Howl({
-        src:['../audio/music/Mall.ogg'],
+        src:['audio/music/Mall.ogg'],
         loop:true,
         volume: 0.4
     }),
     discovery: new Howl({
-        src:['../audio/music/The Biggest Discovery.ogg'],
+        src:['audio/music/The Biggest Discovery.ogg'],
         loop:true,
         volume: 0.4
     }),
     mimos: new Howl({
-        src:['../audio/music/Mimos Menguados.ogg'],
+        src:['audio/music/Mimos Menguados.ogg'],
         loop:true,
         volume: 0.4
     }),
     solve: new Howl({
-        src:['../audio/music/Solve The Puzzle.ogg'],
+        src:['audio/music/Solve The Puzzle.ogg'],
         loop:true,
         volume: 0.4
     })
