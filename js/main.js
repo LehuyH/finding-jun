@@ -60,7 +60,7 @@ $('#modal').modal({
 //Setup menu interaction
 
 newGamebtn = document.getElementById('newGame')
-manageSavesbtn = document.getElementById('manageSaves')
+managesbtn = document.getElementById('manageSaves')
 manageSaves = document.getElementById('manageSaves')
 
 //Get other elements
@@ -349,5 +349,5 @@ function saveGame() {
 
   }
   localStorage.setItem("save", JSON.stringify(save))
-  openModal("Game Saved", "You can load the save from the main menuq")
+  openModal("Game Saved", "You can load the save from the main menu")
 }
